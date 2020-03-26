@@ -6,7 +6,6 @@ window.addEventListener('load', function () {
 
     var curentPage = 10;
     let firsChar = 0;
-    // nextButton.addEventListener('click', getNewChar);
 
     nextButton.addEventListener('click', goNextPage);
     previousButton.addEventListener('click', goBack);
@@ -29,7 +28,6 @@ window.addEventListener('load', function () {
     
 
     var getJson = function(url, fooToCreateEl, charDiv) {
-        // loader.classList.toggle('hidden');
         fetch(url)
             .then(
                 function (response) {
@@ -40,7 +38,6 @@ window.addEventListener('load', function () {
                     response.json()
                             .then(function (data) {
                                 fooToCreateEl(data, charDiv);
-                                // loader.classList.toggle('hidden');
                             });
                 }
             )
@@ -66,7 +63,6 @@ window.addEventListener('load', function () {
 
     function createTableForChar(data) {
         var charDiv = document.createElement('div');
-        // charDiv.classList.add('character');
         charDiv.innerHTML = charTempl;
         charDiv.querySelector('.name').innerHTML = data.name
         charDiv.querySelector('.name').addEventListener('click', showHide)
