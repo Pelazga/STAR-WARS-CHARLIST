@@ -3,12 +3,16 @@ window.addEventListener('load', function () {
     var charListDiv = document.querySelector('.charList');
     var nextButton = document.querySelector('.next');
     var previousButton = document.querySelector('.previous');
+    var undercoverDiv = document.querySelector('.undercover');
+    var goBackBtn = document.querySelector('.go-back-btn');
 
     var curentPage = 10;
     let firsChar = 0;
 
     nextButton.addEventListener('click', goNextPage);
     previousButton.addEventListener('click', goBack);
+    
+   
 
     function goNextPage() {
         curentPage += 10;
@@ -25,7 +29,6 @@ window.addEventListener('load', function () {
             createTenChar();
         }
     }
-    
 
     var getJson = function(url, fooToCreateEl, charDiv) {
         fetch(url)
@@ -57,9 +60,17 @@ window.addEventListener('load', function () {
 
     function showHide (e) {
         targetDiv = e.target.nextElementSibling;
-        targetDiv.classList.toggle('hidden')
+        targetDiv.classList.toggle('hidden');
+        undercoverDiv.classList.toggle('hidden');
     };
 
+    function hideInfo(e) {
+        targetDiv = e.target.parentNode.parentNode.parentNode;
+        console.log(targetDiv);
+        
+        targetDiv.classList.toggle('hidden');
+        undercoverDiv.classList.toggle('hidden');
+    }
 
     function createTableForChar(data) {
         var charDiv = document.createElement('div');
@@ -75,7 +86,7 @@ window.addEventListener('load', function () {
         let speciesUrl = data.species;
         addPlanetOrSpecies(speciesUrl, charDiv, 'species')
         charListDiv.appendChild(charDiv);
-        
+        charDiv.querySelector('.go-back-btn').addEventListener('click', hideInfo)
         
     }
     function createFilmList(arr, charDiv) {
@@ -142,6 +153,11 @@ window.addEventListener('load', function () {
                                     Species
                                 </div>
                                 <div class="species">
+                                </div>
+                            </div>
+                            <div class="btn-wraper">
+                                <div class="go-back-btn">
+                                    <p>Go back to list</p>
                                 </div>
                             </div>
                         </div>
