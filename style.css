@@ -1,0 +1,120 @@
+/* @font-face {
+    font-family: 'Star Jedi Rounded';
+    src: url('font/StarJediRounded.woff2') format('woff2'),
+        url('font/StarJediRounded.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+} */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    display: grid;
+    background-image: url(/TEST/bg_022x.jpg);
+    background-position: top center;
+    background-color: #1a1a1a;
+    background-repeat: no-repeat;
+}
+
+.logo {
+    justify-self: center;
+    margin: 30px;
+}
+
+.charList {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    padding: 50px 150px;
+    justify-items: stretch;
+    align-items: stretch;
+}
+
+.cover{
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100%;
+    background: rgba(134, 134, 134, 0.644);
+}
+
+.aditional-info>div{
+    display: grid;
+    padding: 10px;
+    grid-template-columns: 20% 80%;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+    justify-items: stretch;
+    align-items: stretch;
+
+
+}
+
+.aditional-info>div>div {
+    display: inline;   
+}
+
+.character {
+    color: rgb(255, 254, 249);
+    padding: 10px;
+    word-wrap: break-word;
+    min-width: 410px;
+
+    /* height: auto; */
+}
+.name{
+    text-align: center;
+    border: 1px solid rgb(76, 76, 255);
+    border-radius: 4px;
+    cursor: pointer;
+    padding: 15px;
+}
+
+.films>ul{
+    list-style: none;
+}
+.pagination {
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    grid-template-rows: auto;
+    grid-template-areas:
+        ". btnPrv btnNxt .";
+    justify-items: center;
+    grid-gap: 20px;
+
+
+    grid-template-areas:
+        "header header header header"
+        "main main . sidebar"
+        "footer footer footer footer";
+}
+
+.button {
+
+    width: 300px;
+    height: 50px;
+}
+
+.previous,
+.next {
+    margin: 30px;
+    padding: 10px 15px;
+    border-radius: 3px;
+    border: 1px solid ivory;
+    grid-area: "btnNxt";
+    cursor: pointer;
+    color: ivory;
+    text-transform: uppercase;
+}
+.hidden{
+    display: none;
+    height: 0;
+    overflow: hidden;
+    transition: all 0.5s;
+
+}
