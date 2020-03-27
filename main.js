@@ -11,26 +11,32 @@ window.addEventListener('load', function () {
 
     nextButton.addEventListener('click', goNextPage);
     previousButton.addEventListener('click', goBack);
-    
-   
+
+
 
     function goNextPage() {
+
+        previousButton.classList.remove('hidden');
+
         curentPage += 10;
-        firsChar +=10;
-        charListDiv.innerHTML ='';
+        firsChar += 10;
+        charListDiv.innerHTML = '';
         createTenChar();
     }
 
     function goBack() {
+        if (curentPage <= 10 || firsChar <= 0) {
+            previousButton.classList.add('hidden');
+        }
         if (curentPage > 10 || firsChar > 0) {
             curentPage -= 10;
-            firsChar -=10;
-            charListDiv.innerHTML ='';
+            firsChar -= 10;
+            charListDiv.innerHTML = '';
             createTenChar();
         }
     }
 
-    var getJson = function(url, fooToCreateEl, charDiv) {
+    var getJson = function (url, fooToCreateEl, charDiv) {
         fetch(url)
             .then(
                 function (response) {
@@ -39,26 +45,26 @@ window.addEventListener('load', function () {
                         return
                     }
                     response.json()
-                            .then(function (data) {
-                                fooToCreateEl(data, charDiv);
-                            });
+                        .then(function (data) {
+                            fooToCreateEl(data, charDiv);
+                        });
                 }
             )
             .catch(function (err) {
-                console.log('Fetch Error :-S', err);  
+                console.log('Fetch Error :-S', err);
             })
     }
 
-    function createTenChar (){
+    function createTenChar() {
         for (let i = curentPage; i > firsChar; i--) {
             let newUrl = charUrl + i
-            let charData = getJson(newUrl , createTableForChar);            
+            let charData = getJson(newUrl, createTableForChar);
         }
     }
 
     createTenChar();
 
-    function showHide (e) {
+    function showHide(e) {
         targetDiv = e.target.nextElementSibling;
         targetDiv.classList.toggle('hidden');
         undercoverDiv.classList.toggle('hidden');
@@ -67,7 +73,7 @@ window.addEventListener('load', function () {
     function hideInfo(e) {
         targetDiv = e.target.parentNode.parentNode.parentNode;
         console.log(targetDiv);
-        
+
         targetDiv.classList.toggle('hidden');
         undercoverDiv.classList.toggle('hidden');
     }
@@ -87,17 +93,18 @@ window.addEventListener('load', function () {
         addPlanetOrSpecies(speciesUrl, charDiv, 'species')
         charListDiv.appendChild(charDiv);
         charDiv.querySelector('.go-back-btn').addEventListener('click', hideInfo)
-        
+
     }
+
     function createFilmList(arr, charDiv) {
         for (let i = 0; i < arr.length; i++) {
             let filmUrl = arr[i];
             let film = getJson(filmUrl, createLiEl, charDiv);
-            
+
         }
     }
 
-    function createLiEl (data, charDiv) {
+    function createLiEl(data, charDiv) {
         let newli = document.createElement('li');
         newli.innerHTML = data.title;
         let filmList = charDiv.querySelector('.filmList');
@@ -105,7 +112,7 @@ window.addEventListener('load', function () {
     }
 
     function addPlanetOrSpecies(url, charDiv, className) {
-        getJson(url, function(data) {
+        getJson(url, function (data) {
             charDiv.querySelector(`.${className}`).innerHTML = data.name
         })
     }
@@ -162,6 +169,6 @@ window.addEventListener('load', function () {
                             </div>
                         </div>
                     </div>`
-             
+
 
 })

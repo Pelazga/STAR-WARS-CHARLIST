@@ -23,7 +23,7 @@ body {
     align-items: stretch;
 }
 
-.cover{
+.cover {
     display: grid;
     justify-content: center;
     align-items: center;
@@ -35,12 +35,13 @@ body {
     background: rgba(134, 134, 134, 0.644);
 }
 
-.aditional-info{
+.aditional-info {
     padding: 50px;
     position: fixed;
     z-index: 999;
     top: 10%;
     left: 25%;
+    overflow: auto;
     width: 50%;
     height: 60%;
     background: #1a1a1a;
@@ -49,7 +50,8 @@ body {
     margin: 0 auto;
     background-image: url(bg_022x.jpg);
 }
-.aditional-info>div{
+
+.aditional-info>div {
     display: grid;
     padding: 10px;
     grid-template-columns: 20% 80%;
@@ -62,14 +64,16 @@ body {
 }
 
 .aditional-info>div>div {
-    display: inline;   
+    display: inline;
 }
-.btn-wraper{
+
+.btn-wraper {
     display: block !important;
     position: relative;
     bottom: 10px;
 }
-.go-back-btn{
+
+.go-back-btn {
     margin: 0 auto;
     height: 50px;
     width: 300px;
@@ -85,7 +89,8 @@ body {
 
     /* height: auto; */
 }
-.name{
+
+.name {
     text-align: center;
     border: 1px solid rgb(76, 76, 255);
     border-radius: 4px;
@@ -93,9 +98,10 @@ body {
     padding: 15px;
 }
 
-.films>ul{
+.films>ul {
     list-style: none;
 }
+
 .pagination {
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
@@ -129,14 +135,16 @@ body {
     color: ivory;
     text-transform: uppercase;
 }
-.undercover{
+
+.undercover {
     position: fixed;
     z-index: 99;
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.61);
 }
-.hidden{
+
+.hidden {
     display: none;
     height: 0;
     overflow: hidden;
